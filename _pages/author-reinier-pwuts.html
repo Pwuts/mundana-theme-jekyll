@@ -1,0 +1,30 @@
+---
+title: "Reinier"
+layout: default
+permalink: "/authors/reinier-pwuts/"
+---
+
+{% assign alias = 'Pwuts' %}
+
+{% assign author = site.authors[alias] %}
+<div class="container">
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-9">
+                <h2 class="font-weight-bold">{{ author.name }} <small>/ {{ alias }}</small> <span class="small btn btn-outline-success btn-sm btn-round"><a href="{{ author.twitter }}">Follow</a></span></h2>
+                <p><a href="{{ author.site }}">{{ author.site }}</a></p>
+                <p class="excerpt">{{ author.bio }}</p>
+            </div>
+            <div class="col-md-3 text-right">
+                <img alt="{{ author.name }}" src="{{ author.avatar | absolute_url }}" class="rounded-circle" height="100" width="100">
+            </div>
+        </div>
+        <h4 class="font-weight-bold spanborder"><span>Posts by {{ author.name }}</span></h4>
+            {% assign posts = site.posts | where:"author",alias %}
+            {% for post in posts %}
+            {% include main-loop-card.html %}
+            {% endfor %}
+    </div>
+</div>
+</div>

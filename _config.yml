@@ -1,41 +1,40 @@
 # Site
-name: 'Mundana'
-description: 'Mundana is a free Jekyll theme for awesome people like you, Medium like.'
-logo: 'assets/images/logo.png'
+name: "Pwutseltronics Jekyll theme"
+description: "An enhanced version of the Mundana Jekyll theme"
+logo:    'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-host: 'https://wowthemesnet.github.io'
-baseurl: '/mundana-theme-jekyll'
-disqus: 'demowebsite'
-email: 'wowthemesnet@gmail.com'
-mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+url: 'https://pwutseltronics.nl'
+baseurl: ''
+disqus:  pwutseltronics
+email:   info@pwutseltronics.nl
+#mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 
 include: ["_pages"]
-permalink: /:title/
+permalink: /:categories/:title/
 
 # Plugins
-plugins: 
+plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag
-  
-authors:
-    sal:
-      name:           Sal
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar1.jpg
-      bio:            "Hi, I am Sal, the author of Mundana, the theme you're currently previewing. I hope you like it!"
-      email:          wowthemesnet@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
+  - jekyll-purgecss
 
-    jane:
-      name:           Jane
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar2.jpg
-      bio:            "Blogger, fashionista, love to explore new ideas and write on my morning coffee!"
-      email:          fakemail@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
- 
+sass:
+  style: expanded
+css_dir: "assets/css"
+
+authors:
+    Pwuts:
+      name:       Reinier
+      site:       https://pwuts.nl
+      avatar:     'assets/images/reinier-avatar.jpg'
+      bio:        "Hi, my name is Reinier and I am the creator of Pwutseltronics"
+      email:      reinier@pwutseltronics.nl
+      twitter:    https://twitter.com/Pwuts1337
+      gitlab:     https://gitlab.com/Pwuts
+      github:     https://github.com/Pwuts
+
 # Defaults
 defaults:
 
@@ -44,22 +43,21 @@ defaults:
       path: "_posts"
     values:
       layout: post
-      author: sal
-      avatar: /assets/images/avatar1.jpg
-      
+      author: Pwuts
+      avatar: 'assets/images/reinier-avatar.jpg'
+
   # all pages
   - scope:
       path: "_pages"
     values:
       layout: page
-      
+
 # Syntax
 markdown: kramdown
 highlighter: rouge
 
 # Paginate
 paginate: 10
-
 
 
 # Exclude metadata and development time dependencies (like Grunt plugins)

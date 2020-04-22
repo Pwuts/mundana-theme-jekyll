@@ -4,50 +4,66 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{page.title}} | {{site.name}}</title>
 
     {% seo %}
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}/{{site.favicon}}">
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | absolute_url }}">
 
     <!-- Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro|Space+Mono|PT+Mono|Turret+Road|Lora:400,400i,700" rel="stylesheet">
 
-    <!-- Bootstrap Modified -->
-    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap.css">
+
+    <!-- Bootstrap Modifications -->
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap-mods.css">
+
+    <!-- Code highlighting Stylesheet -->
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/monokai.css">
 
     <!-- Theme Stylesheet -->
-    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/theme.css">
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/theme.css">
+    <meta name="theme-color" content=""/>
 
-    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="{{ site.url }}{{ site.baseurl }}/assets/js/theme.js"></script>
 
     {% include tracking-header.html %}
-
 </head>
 
-<body class="{% if page.url == "/" %} homefirstpage {% endif %}">
+<body class="{% if page.url == '/' %}homefirstpage {% endif %}dark">
+    <script>initBodyTheme()</script>
 
     <!-- Navbar -->
-    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <nav id="MagicMenu" class="navbar navbar-expand-lg bg-white fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ site.baseurl }}/index.html"><strong>{{site.name}}</strong></a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">
+            <img class="logo" alt="{{ site.name }} logo" src="{{ site.logo | absolute_url }}"/>
+            <strong>{{ site.name }}</strong>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapsedItems" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+        <div class="navbar-collapse collapse" id="navbarCollapsedItems" style="">
             <ul class="navbar-nav mr-auto d-flex align-items-center">
-                {% include menu-header.html %}
+                {% include nav-links.html %}
             </ul>
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                 {% include search-lunr.html %}
             </ul>
         </div>
+        <label id="themeSwitch" class="switch">
+            <input type="checkbox"/>
+            <span class="slider"></span>
+        </label>
+        <script>initThemeSwitch()</script>
     </div>
     </nav>
 
@@ -61,34 +77,25 @@
         {{ content }}
     </main>
 
-    <!-- Scripts: popper, bootstrap, theme -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <script src="{{site.baseurl}}/assets/js/theme.js"></script>
+    <!-- Bootstrap, moved here for faster loading -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
     <!-- Footer -->
-    <footer class="bg-white border-top p-3 text-muted small">
-        <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div>
-                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+    <footer class="bg-white border-top p-2 text-muted small">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center flex-wrap">
+                <span class="navbar-brand py-2 mr-2 mb-0"><strong>Mundana</strong></span>
                 <span>Copyright © {{ "now" | date: "%Y" }}.</span>
 
                 <!--  Github Repo Star Btn-->
-                <a class="text-dark ml-1" target="_blank" rel="noopener" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
-
+                <a class="text-dark ml-1" target="_blank" rel="noopener" href="https://github.com/Pwuts/pwutseltronics-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
             </div>
-            <div>
-                Made with <a target="_blank" class="text-dark font-weight-bold" rel="noopener" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" rel="noopener" href="https://www.wowthemes.net">WowThemes</a>.
-            </div>
-        </div>
+            <span>Theme based on <a target="_blank" class="text-dark font-weight-bold" rel="noopener" href="https://www.wowthemes.net/mundana-jekyll-theme/">Mundana Jekyll Theme</a> by <a class="text-dark" target="_blank" rel="noopener" href="https://www.wowthemes.net">WowThemes</a>.</span>
         </div>
     </footer>
 
     {% include tracking-footer.html %}
-
 </body>
-
 </html>

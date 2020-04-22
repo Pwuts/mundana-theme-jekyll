@@ -4,13 +4,13 @@
         {% for post in site.tags.featured %}
             <li class="mb-4">
             <span>
-                <h6 class="font-weight-bold">
-                    <a href="{{site.baseurl}}{{ post.url }}" class="text-dark">{{ post.title }}</a>
-                </h6>
+                <h5 class="font-weight-bold">
+                    <a href="{{ post.url | absolute_url }}" class="text-dark">{{ post.title }}</a>
+                </h5>
                 <span class="d-block text-muted">
                     In <span class="catlist">
                     {% for category in post.categories %}
-                    <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
+                    <a class="text-capitalize text-muted smoothscroll" href="{{ site.url }}{{ site.baseurl }}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
                     {% endfor %}
                     </span>
                 </span>
